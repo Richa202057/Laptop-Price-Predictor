@@ -28,6 +28,7 @@ ips=st.selectbox('IPS',['No','Yes'])
 
 # to cal ppi take input screen size and screen resolution
 # screen size
+
 size=st.number_input('Screen Size (in Inches)')
 # screen resolution
 resolution=st.selectbox('Screen resolution',['1920x1080','1366x768','1600x900','3840x2160','3200x1800','2880x1800','2560x1600','2560x1440','2304x1440'])
@@ -65,9 +66,12 @@ if st.button('Predict Price'):
     # calculating ppi by the input of screen size and resolution
     # resolution is taken as a string so, convert it into int for performing mathematical calculations.
     x_reso=int(resolution.split('x')[0])
-    y_reso = int(resolution.split('x')[1])
-
-    ppi = ((x_reso ** 2) + (y_reso ** 2) ** 0.5) / size
+    y_reso = int(resolution.split('x')[1])`
+    
+    try:
+        ppi = ((x_reso ** 2) + (y_reso ** 2) ** 0.5) / size
+    except ZeroDivisionError:
+        print("Do not Enter Size as Zero") 
 
     query = np.array([brand, type, ram, weight, touchscreen, ips, ppi, cpu, hdd, ssd, gpu, os])
     # reshaping query (n-d array)
