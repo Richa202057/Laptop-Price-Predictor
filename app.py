@@ -66,7 +66,7 @@ if st.button('Predict Price'):
     # calculating ppi by the input of screen size and resolution
     # resolution is taken as a string so, convert it into int for performing mathematical calculations.
     x_reso=int(resolution.split('x')[0])
-    y_reso = int(resolution.split('x')[1])`
+    y_reso = int(resolution.split('x')[1])
     
     try:
         ppi = ((x_reso ** 2) + (y_reso ** 2) ** 0.5) / size
