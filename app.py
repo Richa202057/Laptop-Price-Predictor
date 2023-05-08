@@ -81,4 +81,6 @@ try:
         result = int(np.exp(pipe.predict(query))[0] ) # since it is in array, so to get value without brackets I should write 0th index value of array
         st.title("The Predicted Price of this Configuration is "+str(result)                 
 except ZeroDivisionError:
+                 print("Do not Enter Size as Zero")
+                 
         print("Do not Enter Size as Zero") 
