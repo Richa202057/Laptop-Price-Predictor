@@ -28,7 +28,6 @@ ips=st.selectbox('IPS',['No','Yes'])
 
 # to cal ppi take input screen size and screen resolution
 # screen size
-
 size=st.number_input('Screen Size (in Inches)')
 # screen resolution
 resolution=st.selectbox('Screen resolution',['1920x1080','1366x768','1600x900','3840x2160','3200x1800','2880x1800','2560x1600','2560x1440','2304x1440'])
@@ -51,8 +50,8 @@ os=st.selectbox('Operating System',df['os'].unique())
 # creating a button
 # when user will press this button this function will be executed
 if st.button('Predict Price'):
-    
-        ## input query (collecting all inputs)
+
+    ## input query (collecting all inputs)
     if touchscreen == 'Yes':
         touchscreen=1
     else:
@@ -63,15 +62,16 @@ if st.button('Predict Price'):
         ips=0
 
 
-        # calculating ppi by the input of screen size and resolution
-        # resolution is taken as a string so, convert it into int for performing mathematical calculations.
+    # calculating ppi by the input of screen size and resolution
+    # resolution is taken as a string so, convert it into int for performing mathematical calculations.
     x_reso=int(resolution.split('x')[0])
     y_reso = int(resolution.split('x')[1])
 
-    ppi = ((x_reso ** 2) + (y_reso ** 2) ** 0.5)/size
+    ppi = ((x_reso ** 2) + (y_reso ** 2) ** 0.5) / size
+
     query = np.array([brand, type, ram, weight, touchscreen, ips, ppi, cpu, hdd, ssd, gpu, os])
-        # reshaping query (n-d array)
-        # as there are 12 columns (as input) with 1 row
+    # reshaping query (n-d array)
+    # as there are 12 columns (as input) with 1 row
     query=query.reshape(1,12)
 
     ## passing this input to pipe object
@@ -79,5 +79,4 @@ if st.button('Predict Price'):
     ## since we have applied the log transformation on output column , so now to predict the exact value we should the reverse
     ## of log operation i.e exponential of this predicted value.
     result = int(np.exp(pipe.predict(query))[0] ) # since it is in array, so to get value without brackets I should write 0th index value of array
-    st.title("The Predicted Price of this Configuration is "+str(result)                 
-     
+    st.title("The Predicted Price of this Configuration is "+str(result))
