@@ -3,8 +3,8 @@ import pickle
 import numpy as np
 import pandas as pd
 # import the model
-df=pd.read_pickle(open('df.pkl'))    # df is a object created by the-serialisation process.
-pipe=pd.read_pickle(open('pipe.pkl')) # pipe is a object created by the-serialisation process.
+df=pd.read_pickle(open('df.pkl','rb'))    # df is a object created by the-serialisation process.
+pipe=pd.read_pickle(open('pipe.pkl','rb')) # pipe is a object created by the-serialisation process.
 
 st.title("Laptop Price Predictor")
 
