@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
-import pandas as pd
+import pandas
 # import the model
 df=pickle.load(open('df.pkl','rb'))    # df is a object created by the-serialisation process.
 pipe=pickle.load(open('pipe.pkl','rb')) # pipe is a object created by the-serialisation process.
